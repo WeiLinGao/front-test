@@ -2,7 +2,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-// Create styling for the input form
+
 const useStyles = makeStyles( () => ({
   formContainer:{  
     width: '500px',
@@ -32,7 +32,7 @@ const EditCampus = (props) => {
   const {handleChange, handleSubmit } = props;
   const classes = useStyles();
 
-  // Render a New Student view with an input form
+  
   return (
     <div>
       <h1>Edit Campus</h1>

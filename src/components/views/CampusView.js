@@ -7,14 +7,14 @@ It constructs a React component to display a single campus and its students (if 
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
-// Take in props data to construct the component
+
 
 const CampusView = (props) => {
   const { campus, deleteCampus, editCampus, deleteStudent,students } = props;
   const [totalStudents, setTotalStudents] = useState(0);
 
   useEffect(() => {
-    // Update total students count when the campus data changes
+    
     if (campus && campus.students) {
       setTotalStudents(campus.students.length);
     }
@@ -23,6 +23,10 @@ const CampusView = (props) => {
   const handleDelete = () => {
     deleteCampus(campus.id);
     console.log("Campus deleted");
+  };
+  const handleEdit = () => {
+    editCampus(campus.id);
+    console.log("Campus Edited");
   };
 
   const handleEnrollStudent = () => {
@@ -39,7 +43,7 @@ const CampusView = (props) => {
       <img src="https://static01.nyt.com/images/2020/03/14/upshot/14up-colleges-remote/14up-colleges-remote-videoSixteenByNineJumbo1600.jpg" alt="Campus" />
 
       <div>
-        <Link to={`/editcampus`}>
+        <Link to={`/editcampus/:id`}>
           <button>Edit campus</button>
         </Link>
       </div>

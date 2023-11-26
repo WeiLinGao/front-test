@@ -9,7 +9,7 @@ import Header from './Header';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+
 import EditCampus from '../views/EditCampus';
 import { editCampusThunk } from '../../store/thunks';
 
@@ -37,29 +37,30 @@ class EditCampusContainer extends Component {
   handleSubmit = async event => {
     event.preventDefault();  
 
-  let campus = {
-    name: this.state.name,
-    address: this.state.address,
-    description: this.state.description
+    let campus = {
+      name: this.state.name,
+      address: this.state.address,
+      description: this.state.description
   };
-
-  try {
+  
  
-    let updatedCampus = await this.props.editCampus(campus);
+  let newCampus = await this.props.editCampus(campus);
 
+
+  if (newCampus && newCampus.id) {
     this.setState({
       name: "", 
       address: "", 
-      description: null,
-      redirect: true,  
-      redirectId: updatedCampus.id
+      description: null, 
+      redirect: true, 
+      redirectId: newCampus.id
     });
-  } catch (error) {
-    
-    console.error('Error editing campus:', error);
+  } else {
+ 
+    console.error("Error: Campus ID not found in the response");
+   
   }
-  };
-
+}
 
   
   componentWillUnmount() {
@@ -80,7 +81,6 @@ class EditCampusContainer extends Component {
         <EditCampus 
           handleChange = {this.handleChange} 
           handleSubmit={this.handleSubmit}
-          campus={this.props.campus}    
           editCampus={this.props.editCampus}
         />
       </div>          

@@ -1,15 +1,10 @@
-/*==================================================
-NewStudentView.js
 
-The Views component is responsible for rendering web page with data provided by the corresponding Container component.
-It constructs a React component to display the new student page.
-================================================== */
-
+import { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-// Create styling for the input form
+
 const useStyles = makeStyles( () => ({
   formContainer:{  
     width: '500px',
@@ -39,7 +34,7 @@ const EditStudentView = (props) => {
   const {handleChange, handleSubmit } = props;
   const classes = useStyles();
 
-  // Render a New Student view with an input form
+  
   return (
     <div>
       <h1>Edit Student</h1>

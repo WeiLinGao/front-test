@@ -29,7 +29,8 @@ class CampusContainer extends Component {
     return (
       <div>
         <Header />
-        <CampusView campus={this.props.campus}
+        <CampusView 
+        campus={this.props.campus}
         allCampuses={this.props.allCampuses}
         deleteCampus={this.props.deleteCampus}
         addCampus={this.props.addCampus}
@@ -65,6 +66,7 @@ const mapDispatch = (dispatch) => {
 CampusContainer.propTypes = {
   Campus: PropTypes.array.isRequired,
   fetchAllCampuses: PropTypes.func.isRequired,
+  editCampus: PropTypes.func.isRequired,
 };
 // Export store-connected container by default
 // CampusContainer uses "connect" function to connect to Redux Store and to read values from the Store 

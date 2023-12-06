@@ -13,7 +13,7 @@ const StudentView = (props) => {
   const email = (student && student.firstname && student.lastname) ?
     `${student.firstname.toLowerCase()}${student.lastname.toLowerCase()}@gmail.com` :
     '';
-  const gpa = ' '; 
+    const gpa = student && student.gpa !== undefined ? student.gpa.toFixed(2) : 'N/A';
 
   return (
     <div>

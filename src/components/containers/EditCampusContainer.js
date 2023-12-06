@@ -40,28 +40,28 @@ class EditCampusContainer extends Component {
     let campus = {
       name: this.state.name,
       address: this.state.address,
-      description: this.state.description
+      description: this.state.description,
+      imageUrl: this.state.imageUrl
   };
   
- 
-  let newCampus = await this.props.editCampus(campus);
+  try {
+    let newCampus = await this.props.editCampus(campus);
 
-
-  if (newCampus && newCampus.id) {
-    this.setState({
-      name: "", 
-      address: "", 
-      description: null, 
-      redirect: true, 
-      redirectId: newCampus.id
-    });
-  } else {
- 
-    console.error("Error: Campus ID not found in the response");
-   
+    if (newCampus && newCampus.id) {
+      this.setState({
+        name: "",
+        address: "",
+        description: null,
+        redirect: true,
+        redirectId: newCampus.id,
+      });
+    } else {
+      console.error("Error: Campus ID not found in the response");
+    }
+  } catch (error) {
+    console.error("Error editing campus:", error);
   }
-}
-
+};
   
   componentWillUnmount() {
       this.setState({redirect: false, redirectId: null});
@@ -81,7 +81,10 @@ class EditCampusContainer extends Component {
         <EditCampus 
           handleChange = {this.handleChange} 
           handleSubmit={this.handleSubmit}
-          editCampus={this.props.editCampus}
+          name={this.state.name}
+          address={this.state.address}
+          description={this.state.description}
+          imageUrl={this.state.imageUrl}
         />
       </div>          
     );

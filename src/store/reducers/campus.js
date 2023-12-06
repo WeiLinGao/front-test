@@ -6,6 +6,7 @@ Depending on the Action object, the Reducer updates the State and return the new
 It also defines the State and its default initial value.
 ================================================== */
 import { FETCH_CAMPUS,EDIT_CAMPUS} from "../actions/actionTypes";  // Import Action Type
+import * as at from "../actions/actionTypes";
 
 // Define default Initial State
 const initialState = {
@@ -15,11 +16,9 @@ const initialState = {
 // REDUCER:
 const campus = (state = initialState, action) => {  // Use "initialState" as default Initial State
   switch (action.type) {
-    case FETCH_CAMPUS:
+    case at.FETCH_CAMPUS:
       return action.payload;
-  
     default:
-      // If the Reducer doesn't recognize the Action Type, returns the previous (current) State unchanged.
       return state;
   }
 };

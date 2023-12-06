@@ -1,4 +1,6 @@
-# client-starter-code
+#Final Project- Front End
 
-This repository is the client (front-end) starter code for Final Project - Full-Stack CRUD Application.
+Group member:
+
+Weilin Gao- WeiLinGao
 
